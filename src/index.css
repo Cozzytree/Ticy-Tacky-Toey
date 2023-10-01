@@ -1,13 +1,90 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: rgb(25, 44, 1);
+}
+#root {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.square > h5 {
+  font-size: 4.2em;
+  text-shadow: 1px 1px 10px lime;
+  color: rgb(139, 247, 139);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.square {
+  width: 6.5em;
+  height: 6.5em;
+  font-size: 1.1em;
+  color: white;
+  font-family: yemila;
+  border: 3px solid rgb(58, 0, 0);
+  margin: 0;
+  cursor: pointer;
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.square:hover {
+  border-color: red;
+}
+.square::after {
+  content: "";
+  width: 105%;
+  height: 100%;
+  position: absolute;
+  border: 5px solid rgb(72, 0, 12);
+  transition: all 0.2s ease;
+  border-radius: 0.2em;
+}
+.square:hover::after {
+  scale: 1.1;
+  border-color: rgb(255, 196, 0);
+  box-shadow: 1px 1px 50px 1px lime;
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.Winner {
+  color: white;
+  font-family: yemila;
+}
+
+.board {
+  animation: slow 0.2s ease;
+}
+@keyframes slow {
+  0% {
+    scale: 0.5;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.win {
+  color: white;
+  font-family: share tech mono;
+}
+
+.Aud {
+  display: none;
+}
+
+.Winner-stats {
+  position: absolute;
+  display: grid;
+  left: 20%;
+  top: 10%;
+  font-size: 1.2em;
+  background: rgba(101, 101, 101, 0.363);
+  padding: 1em;
+  border-radius: 0.5em;
 }
