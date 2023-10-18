@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&family=Reem+Kufi+Fun&display=swap");
+
+* {
+  --primary-font: "Edu NSW ACT Foundation", cursive;
+  --secondary--font: "Reem Kufi Fun", sans-serif;
+}
+
 body {
   background: rgb(25, 44, 1);
 }
@@ -19,7 +26,7 @@ body {
   height: 6.5em;
   font-size: 1.1em;
   color: white;
-  font-family: yemila;
+  font-family: var(--secondary--font);
   border: 3px solid rgb(58, 0, 0);
   margin: 0;
   cursor: pointer;
@@ -71,7 +78,7 @@ body {
 
 .win {
   color: white;
-  font-family: share tech mono;
+  font-family: var(--primary-font);
 }
 
 .Aud {
@@ -81,10 +88,21 @@ body {
 .Winner-stats {
   position: absolute;
   display: grid;
-  left: 20%;
+  left: 10%;
   top: 10%;
   font-size: 1.2em;
   background: rgba(101, 101, 101, 0.363);
   padding: 1em;
   border-radius: 0.5em;
+}
+
+.current--player {
+  width: 100%;
+}
+.current--player p {
+  font-size: 1.3em;
+  font-weight: 500;
+  text-align: center;
+  color: white;
+  font-family: var(--primary-font);
 }

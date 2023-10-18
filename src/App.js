@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import audioFile from "./Cymatics - Odyssey Synth One Shot 13 - F.wav";
 
@@ -17,6 +17,7 @@ function Board() {
   const [current, setCurrent] = useState(true);
   const [xWins, setXWins] = useState(0);
   const [oWins, setOWins] = useState(0);
+  const [currentPlayer, setCurrentPlayer] = useState();
 
   useEffect(() => {
     if (playaudio) {
@@ -24,6 +25,7 @@ function Board() {
       setAudio(false);
     }
   }, [playaudio]);
+
   function checkWinner() {
     const WinningCombinations = [
       [0, 1, 2],
@@ -49,9 +51,11 @@ function Board() {
   const isWinner = checkWinner();
 
   function handleClick(index) {
+    checkWinner();
     const clicked = [...state];
     if (state[index] === null) {
       clicked[index] = current ? "X" : "O";
+      clicked[index] === "X" ? setCurrentPlayer("O") : setCurrentPlayer("X");
       setState(clicked);
       setCurrent(!current);
       setAudio(true);
@@ -86,6 +90,7 @@ function Board() {
         ref={audioRef}
         onEnded={() => setAudio(false)}
       ></audio>
+
       <div className="Winner-stats">
         <div className="win">X Total wins : {xWins}</div>
         <div className="win">O Total wins : {oWins}</div>
@@ -98,6 +103,9 @@ function Board() {
         </>
       ) : (
         <>
+          <Player className="current--player">
+            {currentPlayer && <p>Make your move : {currentPlayer}</p>}
+          </Player>
           <div className="board-row">
             <Square Onclick={() => handleClick(0)} value={state[0]} />
             <Square Onclick={() => handleClick(1)} value={state[1]} />
@@ -126,4 +134,9 @@ function Square({ Onclick, value }) {
     </div>
   );
 }
+
+function Player({ children, className }) {
+  return <div className={className}>{children}</div>;
+}
+
 export default App;
