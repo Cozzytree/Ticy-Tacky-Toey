@@ -106,3 +106,10 @@ body {
   color: white;
   font-family: var(--primary-font);
 }
+
+@media (max-width: 500px) {
+  .Winner-stats {
+    top: 5%;
+    left: 35%;
+  }
+}
